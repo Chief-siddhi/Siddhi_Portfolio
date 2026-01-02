@@ -139,7 +139,7 @@ const socials = [
     text: "Platform",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: " https://siddhi-portfolio-lz4z.onrender.com",
   },
   {
     id: 3,
