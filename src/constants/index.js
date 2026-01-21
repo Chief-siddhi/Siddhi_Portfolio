@@ -376,6 +376,58 @@ const WORK_LOCATION = {
         // },
       ],
     },
+
+    
+    // ▶ Project 4
+    {
+      id: 8,
+      name: "Resumind - ATS Score Checker",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-10 left-80",
+      windowPosition: "top-[33vh] left-7",
+      children: [
+        {
+          id: 1,
+          name: "Resumind.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "Resumind, a resume-focused web application that is recently built and deployed to production.","AI-powered Resume Analyzer built with React & Puter.js. Includes seamless auth, upload and store resumes, and match candidates to jobs using smart AI evaluations.",
+            "All wrapped in a clean, reusable UI,The goal behind this project was to create a clean, intuitive platform that helps users understand resumes with an ATS (Applicant Tracking System)–friendly perspective, while also strengthening my real-world development skills."
+          ],
+        },
+        {
+          id: 2,
+          name: "Resumind.com",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://resumind-kappa-five.vercel.app/auth?next=/",
+          position: "top-10 right-20",
+        },
+        {
+          id: 4,
+          name: "Resumind.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-52 right-80",
+          imageUrl: "/images/project-4.png",
+        },
+        // {
+        //   id: 5,
+        //   name: "Design.fig",
+        //   icon: "/images/plain.png",
+        //   kind: "file",
+        //   fileType: "fig",
+        //   href: "https://google.com",
+        //   position: "top-60 right-20",
+        // },
+      ],
+    },
   ],
 };
 
