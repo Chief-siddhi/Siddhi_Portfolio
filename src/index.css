@@ -33,17 +33,17 @@ body {
 
 @layer base {
   main {
-    @apply w-dvw h-dvh overflow-hidden;
+    @apply w-dvw h-dvh overflow-hidden relative;
   }
 
   nav {
-    @apply flex justify-between items-center bg-white/50 backdrop-blur-3xl p-2 px-5 select-none;
+    @apply flex justify-between items-center bg-white/50 backdrop-blur-3xl p-2 px-3 sm:px-5 select-none relative z-30;
 
     div {
-      @apply flex items-center max-sm:w-full max-sm:justify-center gap-5;
+      @apply flex items-center gap-2 sm:gap-5;
 
       &:last-child {
-        @apply max-sm:hidden;
+        @apply flex items-center gap-3;
       }
     }
 
@@ -56,7 +56,7 @@ body {
     }
 
     time {
-      @apply text-sm font-medium text-black;
+      @apply text-xs sm:text-sm font-medium text-black whitespace-nowrap;
     }
   }
 }
@@ -67,22 +67,18 @@ body {
   }
 
   #welcome {
-    @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none max-sm:h-screen max-sm:w-full max-sm:px-10;
-
-    .small-screen {
-      @apply sm:hidden m-7 bg-red-300/20 backdrop-blur-lg p-3 rounded-md absolute top-10;
-
-      p {
-        @apply flex-1 text-[16px] text-center font-roboto text-gray-400;
-      }
-    }
+    @apply text-gray-200 flex flex-col justify-center items-center absolute inset-0 select-none w-full px-4 text-center pointer-events-none z-0;
   }
 
   #dock {
-    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:hidden;
+    @apply absolute bottom-2 sm:bottom-5 left-0 right-0 mx-auto w-fit z-50 select-none max-w-[96vw];
 
     .dock-container {
-      @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5;
+      @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1 sm:p-1.5 flex items-end gap-1 sm:gap-1.5 overflow-x-auto max-w-full;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .tooltip {
@@ -90,7 +86,7 @@ body {
     }
 
     .dock-icon {
-      @apply size-14 3xl:size-20 cursor-pointer;
+      @apply size-10 sm:size-14 3xl:size-20 cursor-pointer flex-shrink-0;
 
       img {
         @apply object-cover object-center;
@@ -99,10 +95,10 @@ body {
   }
 
   #window-controls {
-    @apply flex gap-2;
+    @apply flex gap-2 items-center;
 
     .close {
-      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer;
+      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer hover:opacity-80 transition-opacity;
     }
 
     .minimize {
@@ -115,47 +111,47 @@ body {
   }
 
   #window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
+    @apply sticky top-0 z-20 flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
   }
 
   #safari {
-    @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-[94vw] max-w-[94vw] md:w-4xl max-h-[78vh] overflow-y-auto md:overflow-hidden absolute top-[8vh] left-[3vw] md:top-40 md:left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     .search {
-      @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
+      @apply flex items-center gap-2 sm:gap-3 flex-1 sm:w-2/3 bg-white border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm;
 
       input {
-        @apply placeholder:text-gray-400;
+        @apply placeholder:text-gray-400 w-full outline-none;
       }
     }
 
     .blog {
-      @apply bg-white p-10 max-w-3xl mx-auto;
+      @apply bg-white p-4 sm:p-8 md:p-10 max-w-3xl mx-auto;
 
       h2 {
-        @apply text-xl font-bold text-pink-600 mb-10;
+        @apply text-lg sm:text-xl font-bold text-pink-600 mb-6 sm:mb-10;
       }
 
       .blog-post {
-        @apply grid grid-cols-12 space-x-5;
+        @apply flex flex-col md:grid md:grid-cols-12 gap-3 md:space-x-5;
 
         img {
-          @apply size-full rounded-md object-cover;
+          @apply size-full rounded-md object-cover max-h-48 md:max-h-none;
         }
 
         .content {
-          @apply col-span-10 space-y-3;
+          @apply md:col-span-10 space-y-2 md:space-y-3;
 
           p {
             @apply text-xs text-gray-500;
           }
 
           h3 {
-            @apply font-semibold text-base text-gray-800;
+            @apply font-semibold text-sm sm:text-base text-gray-800;
           }
 
           a {
-            @apply text-blue-600 text-xs hover:underline flex items-center gap-3;
+            @apply text-blue-600 text-xs hover:underline flex items-center gap-2 sm:gap-3;
           }
         }
       }
@@ -163,33 +159,35 @@ body {
   }
 
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-[94vw] max-w-[94vw] md:w-xl max-h-[78vh] overflow-y-auto md:overflow-hidden absolute top-[8vh] left-[3vw] md:top-32 md:left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
     }
 
     .techstack {
-      @apply text-sm font-roboto p-5;
+      @apply text-xs sm:text-sm font-roboto p-3 sm:p-5;
 
       .label {
-        @apply flex items-center ms-10 mt-7;
+        @apply flex items-center ms-2 sm:ms-10 mt-4 sm:mt-7;
       }
 
       .content {
-        @apply py-5 my-5 border-y border-dashed space-y-1;
+        @apply py-3 sm:py-5 my-3 sm:my-5 border-y border-dashed space-y-2 sm:space-y-1;
 
         li {
+          @apply flex flex-col sm:flex-row sm:items-center;
+
           .check {
-            @apply text-[#00A154] w-5;
+            @apply text-[#00A154] w-5 flex-shrink-0;
           }
 
           h3 {
-            @apply font-semibold text-[#00A154] w-32 ms-5;
+            @apply font-semibold text-[#00A154] w-28 sm:w-32 ms-2 sm:ms-5 flex-shrink-0;
           }
 
           ul {
-            @apply flex items-center gap-3;
+            @apply flex flex-wrap items-center gap-1 sm:gap-3 ms-2 sm:ms-0;
           }
         }
       }
@@ -201,7 +199,7 @@ body {
           @apply flex items-center;
 
           svg {
-            @apply w-5 me-5;
+            @apply w-5 me-3 sm:me-5;
           }
         }
       }
@@ -209,24 +207,24 @@ body {
   }
 
   #contact {
-    @apply max-w-2xl absolute top-60 left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-[94vw] max-w-[94vw] md:max-w-2xl max-h-[78vh] overflow-y-auto md:overflow-hidden absolute top-[8vh] left-[3vw] md:top-60 md:left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
     }
 
     h3 {
-      @apply text-xl font-semibold;
+      @apply text-lg sm:text-xl font-semibold;
     }
 
     ul {
-      @apply flex items-center gap-3;
+      @apply flex flex-col sm:flex-row flex-wrap items-center gap-3;
 
       li {
-        @apply rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300;
+        @apply rounded-lg p-3 w-full sm:w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300;
 
         a {
-          @apply space-y-5;
+          @apply space-y-3 sm:space-y-5;
         }
 
         p {
@@ -237,18 +235,20 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-[94vw] max-w-[94vw] md:max-w-3xl max-h-[78vh] overflow-y-auto md:overflow-hidden absolute top-[8vh] left-[3vw] md:top-96 md:-translate-y-1/2 md:left-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     .sidebar {
-      @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
+      @apply w-full md:w-3/12 flex-none bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200 flex flex-row md:flex-col p-3 md:p-5 overflow-x-auto;
 
       h2 {
         @apply text-xs font-medium text-gray-400 mb-1;
       }
 
       ul {
+        @apply flex flex-row md:flex-col gap-1;
+
         li {
-          @apply flex space-y-1 items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors;
+          @apply flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors whitespace-nowrap;
 
           &:first-child {
             @apply bg-blue-100 text-blue-700;
@@ -266,10 +266,10 @@ body {
     }
 
     .gallery {
-      @apply p-5;
+      @apply p-3 sm:p-5;
 
       ul {
-        @apply grid grid-cols-5 grid-rows-5 gap-2.5;
+        @apply grid grid-cols-2 sm:grid-cols-5 gap-2.5;
 
         li {
           img {
@@ -277,19 +277,19 @@ body {
           }
 
           &:first-child {
-            @apply row-start-1 row-span-3 col-start-1 col-span-3;
+            @apply sm:row-start-1 sm:row-span-3 sm:col-start-1 sm:col-span-3;
           }
 
           &:nth-child(2) {
-            @apply row-start-1 row-span-3 col-start-4 col-span-2;
+            @apply sm:row-start-1 sm:row-span-3 sm:col-start-4 sm:col-span-2;
           }
 
           &:nth-child(3) {
-            @apply row-start-4 row-span-2 col-start-3 col-span-3;
+            @apply sm:row-start-4 sm:row-span-2 sm:col-start-3 sm:col-span-3;
           }
 
           &:last-child {
-            @apply row-start-4 row-span-2 col-start-1 col-span-2;
+            @apply sm:row-start-4 sm:row-span-2 sm:col-start-1 sm:col-span-2;
           }
         }
       }
@@ -297,7 +297,7 @@ body {
   }
 
   #resume {
-    @apply w-fit h-fit absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-[94vw] max-w-[94vw] md:w-fit max-h-[82vh] overflow-y-auto md:overflow-hidden absolute top-[8vh] left-[3vw] md:top-16 md:left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     #window-header {
       h2 {
@@ -307,17 +307,17 @@ body {
   }
 
   #finder {
-    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
+    @apply w-[94vw] max-w-[94vw] md:w-3xl max-h-[78vh] overflow-y-auto md:overflow-hidden absolute top-[8vh] left-[3vw] md:top-20 md:left-40 bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     .sidebar {
-      @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3;
+      @apply w-full md:w-48 bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200 flex flex-row md:flex-col p-3 md:p-5 gap-4 md:space-y-3 overflow-x-auto;
 
       h3 {
         @apply text-xs font-medium text-gray-400 mb-1;
       }
 
       ul {
-        @apply space-y-1;
+        @apply flex flex-row md:flex-col gap-1 md:space-y-1;
 
         .active {
           @apply bg-blue-100 text-blue-700;
@@ -328,30 +328,30 @@ body {
         }
 
         li {
-          @apply flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors;
+          @apply flex items-center gap-2 px-3 py-1.5 sm:py-2 rounded-md cursor-pointer transition-colors whitespace-nowrap;
         }
       }
     }
 
     .content {
-      @apply flex-1 p-8 bg-white max-w-2xl relative;
+      @apply flex-1 p-4 sm:p-8 bg-white max-w-2xl relative min-h-60;
 
       li {
-        @apply absolute flex items-center flex-col gap-3;
+        @apply max-md:static max-md:flex max-md:items-center max-md:flex-col max-md:gap-2 max-md:p-2 md:absolute md:flex md:items-center md:flex-col md:gap-3 cursor-pointer;
 
         img {
-          @apply object-contain object-center size-16 relative group-hover:scale-105;
+          @apply object-contain object-center size-12 sm:size-16 relative group-hover:scale-105;
         }
 
         p {
-          @apply text-sm text-center font-medium w-40;
+          @apply text-xs sm:text-sm text-center font-medium w-24 sm:w-40 truncate md:whitespace-normal;
         }
       }
     }
   }
 
   #txtfile {
-    @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-[94vw] max-w-[94vw] md:w-md max-h-[78vh] overflow-y-auto md:overflow-hidden absolute top-[8vh] left-[3vw] md:top-36 md:right-32 md:left-auto bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -359,7 +359,7 @@ body {
   }
 
   #imgfile {
-    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-[94vw] max-w-[94vw] md:w-xl max-h-[78vh] overflow-y-auto md:overflow-hidden absolute top-[8vh] left-[3vw] md:top-40 md:left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl;
 
     #window-header {
       p {
@@ -377,59 +377,22 @@ body {
   }
 
   #home {
-    @apply relative z-0 max-sm:hidden;
+    @apply relative z-10;
 
     ul {
+      @apply max-sm:p-3 max-sm:flex max-sm:flex-wrap max-sm:gap-2;
+
       li {
-        @apply absolute z-0 select-none flex items-center flex-col;
+        @apply absolute z-10 select-none flex items-center flex-col max-sm:static max-sm:w-20 cursor-pointer;
 
         img {
-          @apply group-hover:bg-gray-950/10 p-1 rounded-md;
+          @apply group-hover:bg-gray-950/10 p-1 rounded-md max-sm:size-10;
         }
 
         p {
-          @apply text-sm text-white text-center px-1 rounded-md group-hover:bg-blue-500 transition-colors max-w-40;
+          @apply text-xs sm:text-sm text-white text-center px-1 rounded-md group-hover:bg-blue-500 transition-colors max-w-20 sm:max-w-40 truncate sm:whitespace-normal;
         }
       }
     }
-  }
-}
-
-@media (max-width: 768px) {
-  #welcome {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    overflow: hidden;
-  }
-
-  #welcome > p,
-  #welcome > h1 {
-    display: none; /* hide main portfolio content */
-  }
-
-  #welcome .small-screen {
-    display: flex !important;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 1.2rem;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent so wallpaper is visible */
-    padding: 20px;
-    box-sizing: border-box;
-    backdrop-blur: 2px; /* optional blur for nicer readability */
-    border-radius: 10px;
   }
 }

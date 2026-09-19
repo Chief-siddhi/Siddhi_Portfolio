@@ -9,23 +9,23 @@ const Safari = () => {
      <div id="window-header">
         <WindowControls target="safari"/>
 
-        <PanelLeft className="ml-10 icon"/>
+        <PanelLeft className="ml-4 icon hidden sm:block"/>
 
-        <div className="flex items-center gap-1 ml-5">
+        <div className="hidden sm:flex items-center gap-1 ml-2">
             <ChevronLeft className="icon"/>
             <ChevronRight className="icon"/>
         </div>
 
-        <div className="flex-1 flex-center gap-3">
-            <ShieldHalf className="icon"/>
+        <div className="flex-1 flex-center gap-2 sm:gap-3 mx-2">
+            <ShieldHalf className="icon hidden sm:block"/>
 
             <div className="search">
-                <Search className="icon"/>
-                <input type="text" placeholder="Search or enter website name" className="flex-1" />
+                <Search className="icon size-4 sm:size-5 flex-shrink-0"/>
+                <input type="text" placeholder="Search or enter website name" className="flex-1 min-w-0" />
             </div>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="hidden md:flex items-center gap-3">
             <Share className="icon"/>
             <Plus className="icon" />
             <Copy className="icon"/>
@@ -37,7 +37,7 @@ const Safari = () => {
         <div className="space-y-8">
             {blogPosts.map(({id,image,title,date,link})=>(
                 <div key={id} className="blog-post">
-                    <div className="col-span-2">
+                    <div className="md:col-span-2 w-full">
                         <img src={image} alt={title} />
                     </div>
 

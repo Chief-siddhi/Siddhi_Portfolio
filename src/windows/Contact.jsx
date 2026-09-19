@@ -17,9 +17,9 @@ const Contact = () => {
         <p>Got an idea? A bug to squash? Or just wanna talk tech? I'm in.</p>
         <p>siddhisharma060107@gmail.com</p>
 
-        <ul>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {socials.map(({id,bg,link,icon,text})=>(
-                <li key={id} style={{backgroundColor: bg}} >
+                <li key={id} style={{backgroundColor: bg}} className="w-full">
                     <a
                     href={link}
                     target="_blank"

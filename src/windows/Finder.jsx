@@ -41,7 +41,7 @@ const Finder = () => {
         <Search className="icon" />
       </div>
 
-      <div className="bg-white flex h-full">
+      <div className="bg-white flex flex-col md:flex-row h-full">
         <div className="sidebar">
           <div>
             <h3>Favorites</h3>
@@ -53,7 +53,7 @@ const Finder = () => {
             <ul>{renderList(locations.work.children)}</ul>
           </div>
         </div>
-        <ul className="content">
+        <ul className="content max-md:grid max-md:grid-cols-2 sm:max-md:grid-cols-3 max-md:gap-4">
           {activeLocation?.children.map((item) => (
             <li
               key={item.id}

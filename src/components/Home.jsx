@@ -1,6 +1,7 @@
 import {locations} from "#constants/index.js";
 import clsx from "clsx";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { Draggable } from "gsap/all";
 import useWindowStore from "#store/window";
 import useLocationStore from "#store/location";
@@ -16,7 +17,11 @@ const Home = () => {
     }
 
     useGSAP(()=>{
-        Draggable.create(".folder");
+        const mm = gsap.matchMedia();
+        mm.add("(min-width: 640px)", () => {
+            Draggable.create(".folder");
+        });
+        return () => mm.revert();
     },[])
   return (
     <section id='home'>

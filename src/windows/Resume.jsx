@@ -10,7 +10,24 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     import.meta.url,
 ).toString();
 
+import React, { useState, useEffect } from "react";
+
 const Resume = () => {
+  const [pageWidth, setPageWidth] = useState(() => {
+    if (typeof window !== "undefined") {
+      return Math.min(window.innerWidth * 0.9, 600);
+    }
+    return 600;
+  });
+
+  useEffect(() => {
+    const updateWidth = () => {
+      setPageWidth(Math.min(window.innerWidth * 0.9, 600));
+    };
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   return (
     <>
       <div id="window-header">
@@ -21,8 +38,9 @@ const Resume = () => {
         </a>
       </div>
 
-      <Document file="files/resume.pdf" >
+      <Document file="files/resume.pdf" className="flex justify-center p-2">
         <Page pageNumber={1} 
+        width={pageWidth}
         renderTextLayer 
         renderAnnotationLayer/>
       </Document>

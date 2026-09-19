@@ -10,8 +10,8 @@ const Navbar = () => {
   return (
     <nav>
         <div>
-            <img src="/images/logo.svg" alt="logo" />
-            <p className='font-bold'>Siddhi's Portfolio</p>
+            <img src="/images/logo.svg" alt="logo" className="size-4 sm:size-auto"/>
+            <p className='font-bold text-xs sm:text-sm whitespace-nowrap'>Siddhi's Portfolio</p>
             <ul>
                 {navLinks.map(({id,name,type})=>(
                     <li key={id} onClick={()=> openWindow(type)}>
@@ -22,7 +22,7 @@ const Navbar = () => {
         </div>
 
         <div>
-            <ul>
+            <ul className='hidden md:flex items-center gap-3'>
                 {navIcons.map(({ id, img})=>(
                     <li key={id}>
                         <img src={img} className='icon-hover' alt={`icon-${id}`} />
@@ -30,7 +30,7 @@ const Navbar = () => {
                 ))}
             </ul>
 
-            <time>{dayjs().format("ddd MMM D h:mm A")}</time>
+            <time className='text-xs sm:text-sm whitespace-nowrap'>{dayjs().format("ddd MMM D h:mm A")}</time>
         </div>
     </nav>
   )

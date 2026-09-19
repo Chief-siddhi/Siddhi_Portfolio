@@ -114,7 +114,7 @@ const techStack = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", ],
+    items: ["Node.js", "Express",],
   },
   {
     category: "Database",
@@ -377,15 +377,15 @@ const WORK_LOCATION = {
       ],
     },
 
-    
+
     // ▶ Project 4
     {
       id: 8,
       name: "Resumind - ATS Score Checker",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-10 left-80",
-      windowPosition: "top-[33vh] left-7",
+      position: "top-48 left-10",
+      windowPosition: "top-[48vh] left-7",
       children: [
         {
           id: 1,
@@ -395,7 +395,7 @@ const WORK_LOCATION = {
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Resumind, a resume-focused web application that is recently built and deployed to production.","AI-powered Resume Analyzer built with React & Puter.js. Includes seamless auth, upload and store resumes, and match candidates to jobs using smart AI evaluations.",
+            "Resumind, a resume-focused web application that is recently built and deployed to production.", "AI-powered Resume Analyzer built with React & Puter.js. Includes seamless auth, upload and store resumes, and match candidates to jobs using smart AI evaluations.",
             "All wrapped in a clean, reusable UI,The goal behind this project was to create a clean, intuitive platform that helps users understand resumes with an ATS (Applicant Tracking System)–friendly perspective, while also strengthening my real-world development skills."
           ],
         },
@@ -416,6 +416,57 @@ const WORK_LOCATION = {
           fileType: "img",
           position: "top-52 right-80",
           imageUrl: "/images/project-4.png",
+        },
+        // {
+        //   id: 5,
+        //   name: "Design.fig",
+        //   icon: "/images/plain.png",
+        //   kind: "file",
+        //   fileType: "fig",
+        //   href: "https://google.com",
+        //   position: "top-60 right-20",
+        // },
+      ],
+    },
+    // ▶ Project 5
+    {
+      id: 9,
+      name: "AI Attendance System",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-48 left-72",
+      windowPosition: "top-[63vh] left-7",
+      children: [
+        {
+          id: 1,
+          name: "AI Attendance System.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 right-10",
+          description: [
+            "Built a dual-biometric classroom attendance platform combining facial recognition (dlib, ResNet, 128-D embeddings) and voice-print verification (Resemblyzer, Librosa, 256-D embeddings), cutting manual roll-call time by ~90\% and eliminating proxy attendance.",
+            "Engineered multi-face group-photo detection using vector similarity matching, enabling simultaneous identification of multiple students from a single classroom image without retraining models.",
+            "Designed a Supabase (PostgreSQL) backend with role-based access control and bcrypt password hashing, plus QR-code one-click course enrollment (Segno) and Pandas-driven real-time attendance analytics dashboards."
+          ],
+        },
+        {
+          id: 2,
+          name: "AI Attendance System.com",
+          icon: "/images/safari.png",
+          kind: "file",
+          fileType: "url",
+          href: "https://ai-attendance-system-rose.vercel.app/",
+          position: "top-20 left-20",
+        },
+        {
+          id: 4,
+          name: "AI Attendance System.png",
+          icon: "/images/image.png",
+          kind: "file",
+          fileType: "img",
+          position: "top-52 left-80",
+          imageUrl: "/images/project-5.png",
         },
         // {
         //   id: 5,
