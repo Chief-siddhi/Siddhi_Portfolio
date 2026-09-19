@@ -67,7 +67,7 @@ body {
   }
 
   #welcome {
-    @apply text-gray-200 flex flex-col justify-center items-center absolute inset-0 select-none w-full px-4 text-center pointer-events-none z-0;
+    @apply text-gray-200 flex flex-col justify-center items-center absolute inset-0 select-none w-full px-4 text-center max-sm:pointer-events-none z-0;
   }
 
   #dock {
@@ -76,6 +76,7 @@ body {
     .dock-container {
       @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1 sm:p-1.5 flex items-end gap-1 sm:gap-1.5 overflow-x-auto max-w-full;
       scrollbar-width: none;
+
       &::-webkit-scrollbar {
         display: none;
       }
@@ -98,7 +99,13 @@ body {
     @apply flex gap-2 items-center;
 
     .close {
-      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer hover:opacity-80 transition-opacity;
+      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer hover:opacity-80 transition-opacity relative;
+      /* Expand touch tap target to ~44x44px without changing visual size */
+      &::after {
+        content: '';
+        position: absolute;
+        inset: -14px;
+      }
     }
 
     .minimize {
